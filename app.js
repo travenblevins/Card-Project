@@ -3,21 +3,32 @@ const jwt = require('jsonwebtoken');
 const { expressjwt } = require('express-jwt');
 const app = express();
 app.use(express.json());
-const secret = 'secret';
-const cards = require('./cards.json');
+const cardsData = require('./cards.json');
+const cards = cardsData.cards;
 const users = require('./users.json');
+const secret = 'secret'
+
+
+app.get('/', (req, res) => {
+    res.send(cards)
+})
+
 
 //Read certain cards
 app.get('/cards', (req, res) => {
-    const card = cards.find(card => card.set === req.params.set &&
-        card.type === req.params.type &&
-        card.rarity === req.params.rarity);
+    const { set, type, rarity } = req.query; // Using query parameters
+    const card = cards.find(card => 
+        card.set === set &&
+        card.type === type &&
+        card.rarity === rarity
+    );
     if (!card) {
-        return res.status(404).end();
+        return res.status(404).json({ error: 'Card not found' });
     } else {
         res.json(card);
     }
-})
+});
+
 
 //Login
 app.post('/login', (req, res) => {
@@ -57,6 +68,7 @@ app.post('/cards/update', expressjwt({ secret: secret, algorithms: ["HS256"] }),
         return res.status(404).end();
     } else {
         cards.push(card);
+        res.card(existingCard, 1);
         res.status(204).end();
     }
 })

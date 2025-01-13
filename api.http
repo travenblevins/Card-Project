@@ -1,0 +1,11 @@
+
+
+###
+POST http://localhost:3000/cards/update
+
+{
+  "id": "5f5b3b3b4b3b3b3b3b3b3b3b",
+  "title": "New title",
+  "description": "New description",
+  "status": "done"
+}
