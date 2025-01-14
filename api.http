@@ -9,3 +9,52 @@ POST http://localhost:3000/cards/update
   "description": "New description",
   "status": "done"
 }
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "userId": "alice",
+  "password": "123"
+}
+
+
+###
+POST http://localhost:3000/cards/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhbGljZSIsImlhdCI6MTczNjg2NjQxOSwiZXhwIjoxNzM2ODY3MDE5fQ.yVeFIbXwXCMgPBuSPEawUjHi6OUojD-rVlHDW3RDmWQ
+
+{
+  "cardId": "12345",
+  "cardName": "Example Card",
+  "cardType": "Visa",
+  "cardHolder": "Alice Smith",
+  "expiryDate": "12/2025"
+}
+
+###
+POST http://localhost:3000/cards/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhbGljZSIsImlhdCI6MTczNjg2NjQxOSwiZXhwIjoxNzM2ODY3MDE5fQ.yVeFIbXwXCMgPBuSPEawUjHi6OUojD-rVlHDW3RDmWQ
+
+{
+  "cardId": "12345",
+  "cardName": "Updated Card",
+  "cardType": "MasterCard",
+  "cardHolder": "Alice Smith",
+  "expiryDate": "01/2026"
+}
+
+###
+POST http://localhost:3000/cards/delete
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhbGljZSIsImlhdCI6MTczNjg2NjQxOSwiZXhwIjoxNzM2ODY3MDE5fQ.yVeFIbXwXCMgPBuSPEawUjHi6OUojD-rVlHDW3RDmWQ
+
+{
+  "cardId": "12345",
+  "cardName": "Updated Card",
+  "cardType": "MasterCard",
+  "cardHolder": "Alice Smith",
+  "expiryDate": "01/2026"
+}
